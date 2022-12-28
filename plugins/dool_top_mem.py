@@ -35,7 +35,9 @@ class dstat_plugin(dstat):
                 continue
 
             self.val["max"] = usage
-            self.val["name"] = getnamebypid(pid, l[1][1:-1])
+            self.val["name"] = getnamebypid(
+                pid, proc_splitline("/proc/%s/comm" % pid)[0:-1]
+            )
             self.val["pid"] = pid
 
         self.output = "%-*s%s" % (
