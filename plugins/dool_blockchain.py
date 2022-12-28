@@ -16,7 +16,7 @@ class dstat_plugin(dstat):
 
     def get_blocknumber(self, url):
         block_in_hash = requests.post(
-            "http://localhost:8545",
+            url=url,
             json={"jsonrpc": "2.0", "method": "eth_blockNumber", "params": [], "id": 1},
             timeout=5,
         ).json()["result"]
